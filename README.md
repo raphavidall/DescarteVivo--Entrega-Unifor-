@@ -29,20 +29,20 @@ Este projeto está alinhado com o **Objetivo de Desenvolvimento Sustentável (OD
 
 #### **Mobile**
 
-![Mobile-Perfil](images/mobile-profile)
-![Mobile-Movimentar](images/mobile-move)
-![Mobile-Loja](images/mobile-store)
-![Mobile-Extrato](images/mobile-movement-statement)
-![Mobile-Navegação](images/mobile-nav)
+![Mobile-Perfil](images/mobile-profile.png)
+![Mobile-Movimentar](images/mobile-move.png)
+![Mobile-Loja](images/mobile-store.png)
+![Mobile-Extrato](images/mobile-movement-statement.png)
+![Mobile-Navegação](images/mobile-nav.png)
 
 #### **Desktop**
 
-![Desktop-Movimentar](images/desktop-move)
-![Desktop-Loja](images/desktop-store)
-![Desktop-Notificações](images/desktop-notifications)
-![Desktop-Detalhes do pacote](images/desktop-package-details)
-![Desktop-Extrato](images/desktop-movement-statement)
-![Desktop-Novidades](images/desktop-news)
+![Desktop-Movimentar](images/desktop-move.png)
+![Desktop-Loja](images/desktop-store.png)
+![Desktop-Notificações](images/desktop-notifications.png)
+![Desktop-Detalhes do pacote](images/desktop-package-details.png)
+![Desktop-Extrato](images/desktop-movement-statement.png)
+![Desktop-Novidades](images/desktop-news.png)
 
 
 

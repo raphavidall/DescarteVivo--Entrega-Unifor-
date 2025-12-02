@@ -6,11 +6,11 @@ O **Descarte Vivo** é uma plataforma digital projetada para aprimorar a logíst
 
 Atualmente, o descarte incorreto de resíduos sólidos gera graves problemas ambientais e desperdício de recursos econômicos. A cadeia de reciclagem é fragmentada, informal e carece de confiança. O Descarte Vivo soluciona isso ao:
 
-- **Centralizar a oferta e demanda de resíduos recicláveis em um marketplace geolocalizado.
+- **Centralizar a oferta e demanda de resíduos recicláveis em um marketplace geolocalizado.**
 
-- **Garantir a segurança financeira através de um modelo de custódia (Escrow), onde o pagamento só é liberado mediante confirmação de entrega.
+- **Garantir a segurança financeira através de um modelo de custódia (Escrow), onde o pagamento só é liberado mediante confirmação de entrega.**
 
-- **Formalizar a coleta, permitindo que coletores encontrem oportunidades de frete próximas a eles.
+- **Formalizar a coleta, permitindo que coletores encontrem oportunidades de frete próximas a eles.**
 
 Este projeto está alinhado com o **Objetivo de Desenvolvimento Sustentável (ODS) 11: Cidades e Comunidades Sustentáveis**, contribuindo para tornar os assentamentos humanos mais resilientes e sustentáveis.
 
@@ -91,11 +91,11 @@ O projeto foi desenvolvido utilizando uma stack moderna em JavaScript/TypeScript
 
 ### 5.1 Pré-requisitos
 
-- **Node.js (v18 ou superior).
+- **Node.js (v18 ou superior).**
 
-- **Gerenciador de pacotes npm.
+- **Gerenciador de pacotes npm.**
 
-- **PostgreSQL instalado localmente (para rodar fora do Docker/Render).
+- **PostgreSQL instalado localmente (para rodar fora do Docker/Render).**
 
 ### 5.2 Passo a Passo
 
@@ -163,7 +163,7 @@ O sistema encontra-se implantado e acessível publicamente através da plataform
 
 ### Resumo da Validação: Foram realizados testes de usabilidade com 5 usuários potenciais utilizando o protótipo funcional no celular. O foco foi validar o fluxo de "Descartar um Pacote", "Aceitar uma Coleta", até "Destinar um Pacote". Também a consulta de movimentação financeira, registro e login.
 
-- **Principais Feedbacks Recebidos:
+- **Principais Feedbacks Recebidos:**
 
 - Confusão nos Status: Usuários não entendiam quando o pacote estava "vendido" ou "aguardando". Ajuste: Implementação de mensagens descritivas nas notificações e botões bloqueados com cadeado para indicar status de espera.
 
@@ -171,7 +171,7 @@ O sistema encontra-se implantado e acessível publicamente através da plataform
 
 - Visibilidade: Motoristas queriam identificar rápido o que era "trabalho". Ajuste: Criação de diferenciação visual (Card Verde) para oportunidades de coleta.
 
-- **Ajustes Futuros:
+- **Ajustes Futuros:**
 
 - Implementação de avaliação (estrelas) para aumentar a confiança entre usuários.
 

@@ -1,0 +1,21 @@
+import { Router } from "express";
+import { authMiddleware } from "../middlewares/authMiddleware.js";
+import { pacoteController } from "../controllers/pacoteController.js";
+import { mensagemController } from "../controllers/mensagemController.js";
+import upload from "../config/multer.js";
+
+const router = Router();
+
+// router.get("/", pacoteController.get);
+router.get("/", authMiddleware, pacoteController.getAll);
+router.get("/meus", authMiddleware, pacoteController.getMy);
+router.get("/:id", pacoteController.getOne);
+router.post("/", authMiddleware, upload.single("imagem"), pacoteController.create);
+router.put("/:id", pacoteController.update);
+router.delete("/:id", pacoteController.delete);
+
+// Mensagens
+router.get("/:id_pacote/mensagens", mensagemController.getByPacote);
+router.post("/:id_pacote/mensagens", authMiddleware, mensagemController.create);
+
+export default router;

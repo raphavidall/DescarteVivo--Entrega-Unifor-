@@ -1,0 +1,128 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id             Int     @id @default(autoincrement())
+  nome_completo  String
+  email          String  @unique
+  senha_hash     String
+  tipo_documento String
+  documento      String  @unique
+  saldo_moedas   Float   @default(0)
+  endereco       Json?
+  refresh_token  String?
+
+  tutorial_visto Boolean @default(false)
+  premio_recebido Boolean @default(false)
+
+  pacotesDescarte Pacote[] @relation("PacoteDescarte")
+  pacotesColeta   Pacote[] @relation("PacoteColeta")
+  pacotesDestino  Pacote[] @relation("PacoteDestino")
+
+  itensVendidos     ItemLoja[]  @relation("UsuarioVendedor")
+  transacoesOrigem  Transacao[] @relation("TransacaoOrigem")
+  transacoesDestino Transacao[] @relation("TransacaoDestino")
+
+  notificacoesRecebidas Notificacao[] @relation("NotificacaoDestinatario")
+  notificacoesEnviadas Notificacao[] @relation("NotificacaoRemetente")
+}
+
+model Material {
+  id           Int      @id @default(autoincrement())
+  nome         String   @unique
+  valor_por_kg Float
+  pacotes      Pacote[]
+}
+
+model Pacote {
+  id Int @id @default(autoincrement())
+
+  id_ponto_descarte Int
+  id_ponto_coleta   Int?
+  id_ponto_destino  Int?
+
+  pontoDescarte Usuario  @relation("PacoteDescarte", fields: [id_ponto_descarte], references: [id])
+  pontoColeta   Usuario? @relation("PacoteColeta", fields: [id_ponto_coleta], references: [id])
+  pontoDestino  Usuario? @relation("PacoteDestino", fields: [id_ponto_destino], references: [id])
+  
+  titulo String @default("Título Provisório")
+  descricao String?
+  imagemUrl String?
+
+  status              String
+  valor_pacote_moedas Float
+  valor_coleta_moedas Float?
+  peso_kg             Float
+  localizacao         Json?
+
+  material    Material @relation(fields: [id_material], references: [id])
+  id_material Int
+
+  data_criacao DateTime  @default(now())
+  data_coleta  DateTime?
+  data_destino DateTime?
+
+  mensagens Mensagem[]
+  notificacoes Notificacao[]
+}
+
+model Mensagem {
+  id           Int      @id @default(autoincrement())
+  id_pacote    Int
+  id_remetente Int
+  mensagem     String
+  data_envio   DateTime @default(now())
+
+  pacote Pacote @relation(fields: [id_pacote], references: [id])
+}
+
+model ItemLoja {
+  id              Int     @id @default(autoincrement())
+  id_vendedor     Int
+  nome_item       String
+  descricao       String?
+  valor_moedas    Float
+  tipo_item       String?
+  disponibilidade Int     @default(1)
+
+  vendedor Usuario @relation("UsuarioVendedor", fields: [id_vendedor], references: [id])
+}
+
+model Transacao {
+  id             Int      @id @default(autoincrement())
+  id_origem      Int?
+  id_destino     Int?
+  valor          Float
+  tipo           String
+  id_referencia  Int?
+  data_transacao DateTime @default(now())
+
+  origem  Usuario? @relation("TransacaoOrigem", fields: [id_origem], references: [id])
+  destino Usuario?  @relation("TransacaoDestino", fields: [id_destino], references: [id])
+}
+
+model Notificacao {
+  id           Int      @id @default(autoincrement())
+  
+  id_usuario   Int      // Quem recebe
+  usuario      Usuario  @relation("NotificacaoDestinatario", fields: [id_usuario], references: [id])
+  
+  id_pacote    Int?     // Link para o pacote
+  pacote       Pacote?  @relation(fields: [id_pacote], references: [id])
+
+  tipo         String   // SOLICITACAO, CONFIRMACAO, AVISO
+  titulo       String   // "Solicitação de Coleta", "Pacote Compartilhado"
+  mensagem     String
+  lida         Boolean  @default(false)
+  
+  data_criacao DateTime @default(now())
+  
+  id_remetente Int?     // Quem causou a ação (para mostrar a foto dele)
+  remetente    Usuario? @relation("NotificacaoRemetente", fields: [id_remetente], references: [id])
+}

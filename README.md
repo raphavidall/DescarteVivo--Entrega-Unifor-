@@ -44,8 +44,6 @@ Este projeto está alinhado com o **Objetivo de Desenvolvimento Sustentável (OD
 ![Desktop-Extrato](images/desktop-movement-statement.png)
 ![Desktop-Novidades](images/desktop-news.png)
 
-
-
 ## 3. Tecnologias Utilizadas
 
 O projeto foi desenvolvido utilizando uma stack moderna em JavaScript/TypeScript.
